@@ -1,0 +1,76 @@
+#grafo { width: 100%; height: 560px; display: block; }
+
+.node circle { cursor: default; }
+.node.clickable circle { cursor: pointer; }
+.node text { font: 600 10px/1 system-ui, sans-serif; fill: #fff;
+             pointer-events: none; user-select: none; }
+.node.water text { fill: #123; }
+
+.link { stroke: #444; stroke-width: 1.6px; }
+.link.hbond { stroke: #aaa; stroke-width: 1.2px; stroke-dasharray: 3 2; }
+/* Ponte agua-agua: entra na assinatura, mas depende de quantas aguas o
+   deposito modelou. A aresta mais apagada marca essa fragilidade. */
+.link.solvente { stroke-opacity: .3; }
+
+/* Os aneis sao setores do d3.arc(), portanto PREENCHIDOS. Um `fill:none`
+   aqui os apaga sem erro nenhum — foi o que sumiu com o donut. */
+.ring { stroke: none; }
+
+.tip {
+  position: absolute; z-index: 1080; pointer-events: none;
+  background: rgba(20,20,20,.94); color: #fff; border-radius: .375rem;
+  padding: .45rem .6rem; font-size: .78rem; line-height: 1.35;
+  max-width: 260px; box-shadow: 0 .25rem .75rem rgba(0,0,0,.3);
+}
+.tip .k { display: inline-block; width: .6rem; height: .6rem;
+          border-radius: .15rem; margin-right: .35rem; }
+
+#viewer3d, #viewer3dFull { position: relative; width: 100%; }
+#viewer3d { height: 430px; }
+#viewer3dFull { height: 62vh; }
+
+/* Badges: menores, com o id a esquerda e o total destacado a direita. */
+.badge-sig {
+  cursor: pointer; font-size: .655rem; font-weight: 500; line-height: 1.15;
+  padding: .22rem .45rem; display: inline-flex; align-items: center;
+  gap: .3rem; border: 1px solid #dee2e6;
+  background: #f1f3f5; color: #343a40;
+  border-radius: 2rem;
+}
+.badge-sig:hover { background: #e9ecef; }
+.badge-sig:hover { border-color: var(--bs-primary); }
+.badge-sig.active { border-color: var(--bs-primary);
+                    box-shadow: 0 0 0 2px rgba(13,110,253,.25); }
+.badge-sig .lbl { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.badge-sig .cnt {
+  font-weight: 700; font-variant-numeric: tabular-nums; font-size: .62rem;
+  color: #0a7d3f; background: #e6f4ec; border-radius: 1rem;
+  padding: 0 .34rem; min-width: 1.45rem; text-align: center;
+}
+.badge-sig .cnt.hot { color: #fff; background: #0a7d3f; }
+
+/* A faixa da segunda camada ganha fundo proprio: deixa claro que ela e
+   filha do perfil selecionado acima, e nao outra lista independente. */
+#nivel2 {
+  background: #f6f7fc; border: 1px solid #e6e9f5;
+  border-radius: .5rem; padding: .6rem .75rem .75rem;
+  margin-top: .6rem;
+}
+#nivel2 hr { display: none; }
+
+/* Segunda camada: paleta propria, para nao confundir com os perfis. */
+.badge-sig.n2 { background: #eef2ff; border-color: #c7d2fe; color: #2b3a67; }
+.badge-sig.n2:hover { background: #e0e7ff; }
+.badge-sig.n2 .cnt { color: #37438a; background: #dbe2ff; }
+.badge-sig.n2 .cnt.hot { color: #fff; background: #4c5bb3; }
+.badge-sig.n2.active { border-color: #4c5bb3;
+                       box-shadow: 0 0 0 2px rgba(76,91,179,.28); }
+
+.compbar { height: .55rem; border-radius: .2rem; overflow: hidden;
+           display: flex; background: var(--bs-secondary-bg); }
+.compbar span { display: block; height: 100%; }
+
+.pop-legenda { max-width: 380px; }
+.pop-legenda .popover-body { font-size: .8rem; line-height: 1.45; }
+#ajudaModo { vertical-align: -2px; }
+#ajudaModo:hover { color: var(--bs-primary) !important; }
